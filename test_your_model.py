@@ -45,12 +45,7 @@ def pre_test(temp):
 		check_sam = np.array(LL).reshape(1,11,11,1)
 		#Measure accuracy of single packet by loading the model (CNN)
 		return check_sam
-def normal_test(pass_input, pass_mo):
-	temp = pass_input.values.tolist()
-	testing_sample = pre_test(temp)
-	y_pred = (pass_mo.predict(testing_sample) > 0.5).astype("int32")
-	return y_pred
-def attack_test(pass_input, pass_mo):
+def packet_test(pass_input, pass_mo):
 	temp = pass_input.values.tolist()
 	testing_sample = pre_test(temp)
 	y_pred = (pass_mo.predict(testing_sample) > 0.5).astype("int32")

@@ -1,4 +1,4 @@
-from test import attack_test, normal_test
+from test_your_model import packet_test
 import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
@@ -122,27 +122,27 @@ def main():
 					test_attack = st.button('Test attack sample')
 					test_normal = st.button('Test normal sample')
 					if test_attack:
-						upload_file = st.sidebar.file_uploader("Upload your input CSV file (single row)", type=["csv"])
-						if upload_file is not None:
-							input_df = pd.read_csv(upload_file)
-						else:
-							input_df = pd.read_csv('Training and Testing Datasets/Attack sample.csv')
-						output = attack_test(input_df, mo)
+						input_df = pd.read_csv('Training and Testing Datasets/Attack sample.csv')
+						output = packet_test(input_df, mo)
 						if np.array_str(output) == '[[0 1]]':
 							st.success('Its normal')
 						else:
 							st.warning('Its an attack')
 					if test_normal:
-						upload_file = st.sidebar.file_uploader("Upload your input CSV file (single row)", type=["csv"])
-						if upload_file is not None:
-							input_df = pd.read_csv(upload_file)
-						else:
-							input_df = pd.read_csv('Training and Testing Datasets/Normal sample.csv')
-						output = normal_test(input_df, mo)
+						input_df = pd.read_csv('Training and Testing Datasets/Normal sample.csv')
+						output = packet_test(input_df, mo)
 						if np.array_str(output) == '[[0 1]]':
 							st.success('Its normal')
 						else:
 							st.warning('Its an attack')
+					upload_file = st.sidebar.file_uploader("Upload your input CSV file (single row)", type=["csv"])
+					if upload_file is not None:
+						input_df = pd.read_csv(upload_file)
+						output = packet_test(input_df, mo)
+						if np.array_str(output) == '[[0 1]]':
+							st.success('Your packet is normal')
+						else:
+							st.warning('Your packet is attack')
 			else:
 				st.warning("Incorrect Username/Password")
 	elif choice == "SignUp":
