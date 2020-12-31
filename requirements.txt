@@ -2,4 +2,4 @@ pandas
 streamlit
 numpy
 scikit_learn
-tensorflow
+tensorflow-cpu
