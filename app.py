@@ -137,7 +137,7 @@ def main():
 						st.write(y_des)
 				elif task == "Result Analysis":
 					st.subheader("Results")
-					testdata = pd.read_csv('E:/8th SEM/Project/Training and Testing Datasets/Modified Test.csv')
+					testdata = pd.read_csv('Training and Testing Datasets/Modified Test.csv')
 					y_attack = pd.get_dummies(testdata['attack_type'])
 					outcom = y_attack.columns
 					num_class = len(outcom)

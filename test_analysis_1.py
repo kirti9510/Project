@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 def test_1(mo):
-	traindata = pd.read_csv('E:/8th SEM/Project/Training and Testing Datasets/Modified Train.csv')
+	traindata = pd.read_csv('Training and Testing Datasets/Modified Train.csv')
 	x_columns = pd.read_csv('Training and Testing Datasets/x_columns.csv')
 	oh_train_x = pd.get_dummies(traindata, columns = ['protocol_type', 'service', 'flag'])
 	oh_train_y = pd.get_dummies(traindata['attack_type'])
